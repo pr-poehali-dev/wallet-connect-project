@@ -581,27 +581,29 @@ const Index = () => {
             {t.hero.description}
           </p>
           
-          <div className="space-y-4">
+          <div className="flex flex-col items-center space-y-4">
             <w3m-button />
             
             {isConnected && address && (
-              <div className="max-w-md mx-auto p-4 bg-dark-card rounded-lg border border-neon-green/20 space-y-2">
-                <p className="text-neon-green text-sm">
+              <div className="max-w-md p-4 bg-dark-card rounded-lg border border-neon-green/20 space-y-2">
+                <p className="text-neon-green text-sm text-center">
                   <strong>Адрес:</strong> {address.slice(0, 6)}...{address.slice(-4)}
                 </p>
                 {chain && (
-                  <p className="text-neon-blue text-sm">
+                  <p className="text-neon-blue text-sm text-center">
                     <strong>Сеть:</strong> {chain.name}
                   </p>
                 )}
-                <Button 
-                  onClick={() => disconnect()}
-                  variant="outline" 
-                  size="sm"
-                  className="text-red-400 border-red-400 hover:bg-red-400/10"
-                >
-                  Отключить
-                </Button>
+                <div className="flex justify-center">
+                  <Button 
+                    onClick={() => disconnect()}
+                    variant="outline" 
+                    size="sm"
+                    className="text-red-400 border-red-400 hover:bg-red-400/10"
+                  >
+                    Отключить
+                  </Button>
+                </div>
               </div>
             )}
           </div>

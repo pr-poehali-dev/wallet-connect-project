@@ -981,6 +981,158 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Contacts Section */}
+      <section id="contacts" className="py-16 px-6 bg-dark-bg">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">
+              {selectedLanguage === 'RU' ? 'Контакты' : 
+               selectedLanguage === 'EN' ? 'Contacts' :
+               selectedLanguage === 'ES' ? 'Contactos' :
+               'Mawasiliano'}
+            </h2>
+            <p className="text-gray-400">
+              {selectedLanguage === 'RU' ? 'Свяжитесь с нами для получения поддержки и консультаций' : 
+               selectedLanguage === 'EN' ? 'Contact us for support and consultations' :
+               selectedLanguage === 'ES' ? 'Contáctanos para soporte y consultas' :
+               'Wasiliana nasi kwa msaada na mashauri'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            {/* Telegram */}
+            <Card className="bg-dark-card border-gray-700 hover:border-neon-blue/50 transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Send" className="text-blue-500" size={32} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">Telegram</h3>
+                <p className="text-gray-400 text-sm mb-4">
+                  {selectedLanguage === 'RU' ? 'Оперативная поддержка 24/7' : 
+                   selectedLanguage === 'EN' ? 'Fast support 24/7' :
+                   selectedLanguage === 'ES' ? 'Soporte rápido 24/7' :
+                   'Msaada wa haraka 24/7'}
+                </p>
+                <Button 
+                  onClick={() => window.open('https://t.me/cryptorichlife', '_blank')}
+                  className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                >
+                  {selectedLanguage === 'RU' ? 'Написать' : 
+                   selectedLanguage === 'EN' ? 'Message' :
+                   selectedLanguage === 'ES' ? 'Escribir' :
+                   'Andika'}
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Email */}
+            <Card className="bg-dark-card border-gray-700 hover:border-neon-blue/50 transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Mail" className="text-green-500" size={32} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">Email</h3>
+                <p className="text-gray-400 text-sm mb-4">support@cryptorichlife.com</p>
+                <Button 
+                  onClick={() => window.open('mailto:support@cryptorichlife.com', '_blank')}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white"
+                >
+                  {selectedLanguage === 'RU' ? 'Написать' : 
+                   selectedLanguage === 'EN' ? 'Send Email' :
+                   selectedLanguage === 'ES' ? 'Enviar' :
+                   'Tuma Barua'}
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Discord */}
+            <Card className="bg-dark-card border-gray-700 hover:border-neon-blue/50 transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-indigo-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="MessageSquare" className="text-indigo-500" size={32} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">Discord</h3>
+                <p className="text-gray-400 text-sm mb-4">
+                  {selectedLanguage === 'RU' ? 'Сообщество трейдеров' : 
+                   selectedLanguage === 'EN' ? 'Traders community' :
+                   selectedLanguage === 'ES' ? 'Comunidad de traders' :
+                   'Jumuiya ya wafanyabiashara'}
+                </p>
+                <Button 
+                  onClick={() => window.open('https://discord.gg/cryptorichlife', '_blank')}
+                  className="w-full bg-indigo-500 hover:bg-indigo-600 text-white"
+                >
+                  {selectedLanguage === 'RU' ? 'Присоединиться' : 
+                   selectedLanguage === 'EN' ? 'Join' :
+                   selectedLanguage === 'ES' ? 'Unirse' :
+                   'Jiunge'}
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* WhatsApp */}
+            <Card className="bg-dark-card border-gray-700 hover:border-neon-blue/50 transition-all duration-300">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-green-600/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Phone" className="text-green-600" size={32} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">WhatsApp</h3>
+                <p className="text-gray-400 text-sm mb-4">+1 (555) 123-4567</p>
+                <Button 
+                  onClick={() => window.open('https://wa.me/15551234567', '_blank')}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                >
+                  {selectedLanguage === 'RU' ? 'Написать' : 
+                   selectedLanguage === 'EN' ? 'Message' :
+                   selectedLanguage === 'ES' ? 'Escribir' :
+                   'Andika'}
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Additional Contact Info */}
+          <div className="mt-12 text-center">
+            <Card className="bg-dark-card border-gray-700 max-w-2xl mx-auto">
+              <CardContent className="p-8">
+                <h3 className="text-xl font-semibold text-white mb-4">
+                  {selectedLanguage === 'RU' ? 'Режим работы поддержки' : 
+                   selectedLanguage === 'EN' ? 'Support Working Hours' :
+                   selectedLanguage === 'ES' ? 'Horario de Soporte' :
+                   'Masaa ya Kazi ya Msaada'}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+                  <div>
+                    <p className="font-medium text-neon-blue">
+                      {selectedLanguage === 'RU' ? 'Понедельник - Пятница' : 
+                       selectedLanguage === 'EN' ? 'Monday - Friday' :
+                       selectedLanguage === 'ES' ? 'Lunes - Viernes' :
+                       'Jumatatu - Ijumaa'}
+                    </p>
+                    <p>24/7</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-neon-blue">
+                      {selectedLanguage === 'RU' ? 'Выходные' : 
+                       selectedLanguage === 'EN' ? 'Weekends' :
+                       selectedLanguage === 'ES' ? 'Fines de semana' :
+                       'Wikendi'}
+                    </p>
+                    <p>24/7</p>
+                  </div>
+                </div>
+                <p className="text-gray-400 mt-4 text-sm">
+                  {selectedLanguage === 'RU' ? 'Среднее время ответа: 15 минут' : 
+                   selectedLanguage === 'EN' ? 'Average response time: 15 minutes' :
+                   selectedLanguage === 'ES' ? 'Tiempo promedio de respuesta: 15 minutos' :
+                   'Muda ya wastani ya kujibu: dakika 15'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-dark-bg border-t border-gray-800 py-8 px-6">
         <div className="container mx-auto text-center">

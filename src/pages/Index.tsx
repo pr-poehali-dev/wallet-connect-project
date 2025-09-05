@@ -4,12 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
+import { useAccount, useDisconnect } from 'wagmi';
 
 const Index = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('RU');
-  const [walletConnected, setWalletConnected] = useState(false);
   const [selectedEarningMethod, setSelectedEarningMethod] = useState('');
   const [investmentAmount, setInvestmentAmount] = useState('1000');
+  
+  const { address, isConnected, chain } = useAccount();
+  const { disconnect } = useDisconnect();
   
   // Countdown timer state
   const [timeLeft, setTimeLeft] = useState({
@@ -451,12 +454,8 @@ const Index = () => {
 
   const t = translations[selectedLanguage as keyof typeof translations];
 
-  const handleConnectWallet = () => {
-    setWalletConnected(!walletConnected);
-  };
-
   const handleEarningMethodClick = (method: string) => {
-    if (!walletConnected) {
+    if (!isConnected) {
       alert(selectedLanguage === 'RU' ? 
         'Сначала подключите кошелек!' : 
         selectedLanguage === 'EN' ? 'Connect wallet first!' :
@@ -582,23 +581,30 @@ const Index = () => {
             {t.hero.description}
           </p>
           
-          <Button 
-            onClick={handleConnectWallet}
-            className={`px-8 py-4 text-lg font-semibold rounded-lg transition-all duration-300 ${
-              walletConnected 
-                ? 'bg-neon-green text-black hover:bg-neon-green/90' 
-                : 'bg-neon-blue hover:bg-neon-blue/90 text-white'
-            } shadow-lg hover:shadow-neon-blue/25 animate-pulse-neon`}
-          >
-            <Icon name="Wallet" className="mr-2" size={20} />
-            {walletConnected ? '✅ Кошелек подключен' : t.hero.connectButton}
-          </Button>
-          
-          {walletConnected && (
-            <div className="mt-4 p-4 bg-dark-card rounded-lg border border-neon-green/20 inline-block">
-              <p className="text-neon-green text-sm">WalletConnect Project ID: a433129315c698cac1d09d492212b6</p>
-            </div>
-          )}
+          <div className="space-y-4">
+            <w3m-button />
+            
+            {isConnected && address && (
+              <div className="max-w-md mx-auto p-4 bg-dark-card rounded-lg border border-neon-green/20 space-y-2">
+                <p className="text-neon-green text-sm">
+                  <strong>Адрес:</strong> {address.slice(0, 6)}...{address.slice(-4)}
+                </p>
+                {chain && (
+                  <p className="text-neon-blue text-sm">
+                    <strong>Сеть:</strong> {chain.name}
+                  </p>
+                )}
+                <Button 
+                  onClick={() => disconnect()}
+                  variant="outline" 
+                  size="sm"
+                  className="text-red-400 border-red-400 hover:bg-red-400/10"
+                >
+                  Отключить
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -903,12 +909,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{t.wallets.metamask.title}</h3>
                 <p className="text-gray-400 text-sm mb-6">{t.wallets.metamask.description}</p>
-                <Button 
-                  onClick={handleConnectWallet}
-                  className="w-full bg-neon-blue hover:bg-neon-blue/90 text-white"
-                >
-                  {t.wallets.connectButton}
-                </Button>
+                <w3m-button />
               </CardContent>
             </Card>
 
@@ -920,13 +921,8 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{t.wallets.walletconnect.title}</h3>
                 <p className="text-gray-400 text-sm mb-2">{t.wallets.walletconnect.description}</p>
-                <p className="text-xs text-gray-500 mb-4">a433129314cc698cac1d09d492212b6</p>
-                <Button 
-                  onClick={handleConnectWallet}
-                  className="w-full bg-neon-blue hover:bg-neon-blue/90 text-white"
-                >
-                  {t.wallets.connectButton}
-                </Button>
+                <p className="text-xs text-gray-500 mb-4">1f381251dc9bb03a8ed7e7cd7928f9ff</p>
+                <w3m-button />
               </CardContent>
             </Card>
 
@@ -938,12 +934,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{t.wallets.coinbase.title}</h3>
                 <p className="text-gray-400 text-sm mb-6">{t.wallets.coinbase.description}</p>
-                <Button 
-                  onClick={handleConnectWallet}
-                  className="w-full bg-neon-blue hover:bg-neon-blue/90 text-white"
-                >
-                  {t.wallets.connectButton}
-                </Button>
+                <w3m-button />
               </CardContent>
             </Card>
           </div>

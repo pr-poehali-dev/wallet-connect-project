@@ -6,7 +6,7 @@ export default {
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -19,6 +19,11 @@ export default {
 		},
 		extend: {
 			colors: {
+				'neon-blue': '#00D4FF',
+				'neon-green': '#00FF88',
+				'neon-pink': '#FF0080',
+				'dark-bg': '#1A1F2C',
+				'dark-card': '#252B3B',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -84,11 +89,29 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'glow': {
+					'0%, 100%': {
+						'box-shadow': '0 0 5px currentColor'
+					},
+					'50%': {
+						'box-shadow': '0 0 20px currentColor, 0 0 30px currentColor'
+					}
+				},
+				'pulse-neon': {
+					'0%, 100%': {
+						'opacity': '1'
+					},
+					'50%': {
+						'opacity': '0.5'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'pulse-neon': 'pulse-neon 2s ease-in-out infinite'
 			}
 		}
 	},
